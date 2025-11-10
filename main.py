@@ -37,7 +37,7 @@ DF_REVIEWS = pd.DataFrame()
 
 # == ĐƯỜNG DẪN DỮ LIỆU CUỐI CÙNG (TỪ PIPELINE) ==
 RESTAURANT_DATA_PATH = "data/restaurant_list_textsearch.csv"
-REVIEW_DATA_PATH = "data/reviews_with_aspects.csv"
+REVIEW_DATA_PATH = "data/final_aspects_extracted.csv"
 
 @app.on_event("startup")
 def load_data():

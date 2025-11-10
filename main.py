@@ -7,24 +7,22 @@ from typing import List, Optional
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import os
-import traceback # Thêm thư viện traceback
+import traceback 
 
-# Import engine ranking
 try:
     import ranking_engine
 except ImportError:
     print("LỖI: Không tìm thấy file 'ranking_engine.py' cùng thư mục.")
     exit()
 
-# --- KHỞI TẠO ỨNG DỤNG ---
+
 app = FastAPI(
     title="FoodiePro API",
     description="API cho hệ thống đề xuất nhà hàng FoodiePro",
     version="1.0.0"
 )
 
-# --- THÊM CORS MIDDLEWARE ---
-# (Rất quan trọng để Vercel gọi được Render)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"], # Cho phép tất cả
@@ -38,7 +36,7 @@ DF_RESTAURANTS = pd.DataFrame()
 DF_REVIEWS = pd.DataFrame()
 
 # == ĐƯỜNG DẪN DỮ LIỆU CUỐI CÙNG (TỪ PIPELINE) ==
-RESTAURANT_DATA_PATH = "data/restaurant_list_final.csv"
+RESTAURANT_DATA_PATH = "data/restaurant_list_textsearch.csv"
 REVIEW_DATA_PATH = "data/reviews_with_aspects.csv"
 
 @app.on_event("startup")
